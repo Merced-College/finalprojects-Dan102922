@@ -1,6 +1,6 @@
 import java.util.List;
 
-Public class order {
+public class Order {
   private int tableNumber;
   private List<MenuItem> items;
 
@@ -9,11 +9,11 @@ Public class order {
     this.items = items;
   }
 
-  getTableNumber() {
+  public int getTableNumber() {
     return tableNumber;
   }
 
-  settablenumber(int tableNumber) {
+  public void setTableNumber(int tableNumber) {
     this.tableNumber = tableNumber;
   }
 }

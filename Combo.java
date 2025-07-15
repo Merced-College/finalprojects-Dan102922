@@ -8,7 +8,7 @@ public class ComboHelper {
     // If it is a combo, recursively unpack its items
     // copilot assisted below
     if (item.isCombo()) {
-      for (MenuItem subItem : item.getItems()) {
+      for (MenuItem subItem : item.getComponents()) {
         unpacked.addAll(unpackCombo(subItem));
       }
     } else {

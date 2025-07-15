@@ -1,3 +1,6 @@
+import java.util.List;
+import java.util.ArrayList;
+
 //This is the class for the menu items, with the name of the item, the price, and whether or not it's a combo
 public class MenuItem {
   private String name;
@@ -18,9 +21,15 @@ public class MenuItem {
   }
 
   public List<MenuItem> getComponents() {
-    return components
+    return components;
   }
   public boolean isCombo() {
     return isCombo;
+  }
+  public String getName() {
+    return name;
+  }
+  public double getPrice() {
+    return price;
   }
 }

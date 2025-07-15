@@ -19,12 +19,8 @@ public class WaitQueue {
     
     // Returns the 0-based position of a table in the queue
     public int getPosition(int tableNumber) {
-        int position = 0;
-        for (int t : tableQueue) {
-            if (t == tableNumber) break;
-            position++;
-        }
-        return position;
+        // add proper algorithm later
+        return 0;
     }
 
     // Returns the total number of tables currently in the queue

@@ -14,10 +14,7 @@ public class undo {
 
 // This undos the last item that was added
 // (need to implement in main later)
-  public MenuItem undoLastItem() {
-    if (!undoItems.isEmpty()) {
-      return undoItems.pop();
-    }
-    return null;
+public MenuItem undoLastItem() {
+  // implement proper algorithm later
   }
 }

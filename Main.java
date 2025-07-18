@@ -30,7 +30,7 @@ public class Main {
         // Initiates scanner for user input
         Scanner scanner = new Scanner(System.in);
 
-        // Display UI options:
+        // Display UI options, the user picks one by number
         boolean running = true;
         while (running) {
             System.out.println("Welcome to the McDonalds Ordering System!");
@@ -47,7 +47,7 @@ public class Main {
             scanner.nextLine();
 
             switch (choice) {
-            case 1: // View the menu
+            case 1: // Display the menu
                 System.out.println("Menu:");
                 System.out.println("#1 Big Mac combo: 10.99");
                 System.out.println("#2 Hamburger combo: 11.99");
@@ -93,13 +93,14 @@ public class Main {
                     if (item == null) {
                         System.out.println("Item not found in menu.");
                     } else {
-                        order.addItem(item);
+                        order.addItem(item); // Adds item
+                        order3.pushUndo(item); // Pushes item to undo stack
                         System.out.println(itemName + " added to order for table #" + tableNumber);
                     }
                 }
                 break;
             case 4: // Undo last item
-                System.out.print("Add item to which order #?");
+                System.out.print("Undo last item for which order #?");
                 int tableNumber = scanner.nextInt();
                 scanner.nextLine();
                 Orders order = orderManager.getOrder(tableNumber);
@@ -115,16 +116,15 @@ public class Main {
                 if (lastItem == null) {
                     System.out.println("There is nothing to undo");
                 } else {
-                    boolean removed = order.removeItem(lastItem);
-                    System.out.println("Removed " + lastItem.getName() + " from table #" + tableNumber + "'s order");
+                    // Remove the last item from the order
+                    boolean removed = order4.removeItem(lastItem);
+                    System.out.println("Removed " + lastItem.getName() + " from table #" + tableNumber4 + "'s order");
                 }
-                break;
-
                 break;
             case 5: // Wait time estiamte
             int tableNumber = promptForTableNumber(scanner);
 
-            if (waitQueue.hasTable(tableNumber)) {
+            if (!waitQueue.hasTable(tableNumber)) {
                 System.out.println("Table " + tableNumber + "isn't in the wait queue")
                 break;
             }

@@ -1,8 +1,9 @@
 import java.util.Stack;
 
-// This keeps tracks of orders made in order to support undo functionality
+// This keeps track of orders made in order to support undo functionality
 
 public class Undo {
+  // Stack to keep track of added menu items for undo
   private Stack<MenuItem> undoStack;
 
   public Undo() {
@@ -14,10 +15,11 @@ public class Undo {
     undoStack.push(item);
   }
 
-  // This undos the last item that was added
-  // (need to implement in main later)
+  // Undoes the last item that was added
   public MenuItem undoLastItem() {
-    // implement proper algorithm later
+    if (!undoStack.isEmpty()) {
+      return undoStack.pop();
+    }
     return null;
   }
 }

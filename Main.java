@@ -83,6 +83,7 @@ public class Main {
                 scanner.nextLine();
                 // copilot assisted below
                 Orders order = orderManager.getOrder(tableNumber);
+                // If the user enters a table number that isn't in the queue
                 if (order == null) {
                     System.out.println("No order found for table #" + tableNumber + ". Please create an order first.");
                 } else {

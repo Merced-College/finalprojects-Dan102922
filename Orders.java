@@ -1,11 +1,11 @@
 import java.util.List;
 
-public class Order {
+public class Orders {
   private int tableNumber;
   private List<MenuItem> items;
   private Undo undo; // Undo stack for this order
 
-  public Order(int tableNumber, List<MenuItem> items) {
+  public Orders(int tableNumber, List<MenuItem> items) {
     this.tableNumber = tableNumber;
     this.items = items;
     undo = new Undo(); // Initialize undo stack
@@ -27,11 +27,7 @@ public class Order {
 
   // Removes an item from the order
   public boolean removeItem(MenuItem item) {
-    boolean removed = items.remove(item);
-    if (removed) {
-      pushUndo(item);
-    }
-    return removed;
+    return items.remove(item);
   }
 
   // Pushes an item to the undo stack
@@ -42,5 +38,26 @@ public class Order {
   // Undoes the last item added and returns it
   public MenuItem undoLastItem() {
     return undo.undoLastItem();
+  }
+
+  // copilot assisted fixes for the program to function
+  // Essential: getter for items for Billing
+  public List<MenuItem> getItems() {
+    return items;
+  }
+
+  // Essential: stub for printOrderSummary and calculateTotal to avoid errors in Main
+  public void printOrderSummary() {
+    for (MenuItem item : items) {
+      System.out.printf("%-25s $%.2f\n", item.getName(), item.getPrice());
+    }
+  }
+
+  public double calculateTotal() {
+    double total = 0.0;
+    for (MenuItem item : items) {
+      total += item.getPrice();
+    }
+    return total;
   }
 }

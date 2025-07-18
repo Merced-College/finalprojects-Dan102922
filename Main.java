@@ -143,6 +143,14 @@ public class Main {
                     System.out.println("No order found for this table number");
                     break;
                 }
+                // Prompts user to enter a tip percentage
+                System.out.print("Would you like to leave a tip? (enter 0 if not)")
+                double tipPercent = 0;
+                tipPercent = Double.parseDouble(scanner.nextLine())
+
+                // Displays the full receipt from the Billing class
+                billing.displayReceipt(currentOrder, tipPercent);
+
                 // copilot assisted below
                 System.out.println("Order summary for table #" + tableNumber6 + ":");
                 currentOrder.printOrderSummary();

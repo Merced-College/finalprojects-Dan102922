@@ -118,13 +118,38 @@ public class Main {
 
                 break;
             case 5: // Wait time estiamte
-                // TODO: Wait time estimate
+            int tableNumber = promptForTableNumber(scanner);
+
+            if (waitQueue.hasTable(tableNumber)) {
+                System.out.println("Table " + tableNumber + "isn't in the wait queue")
                 break;
+            }
+
+            int position = waitQueue.getPosition(tableNumber);
+            // Was done in a rush, implementing proper algorithm tomorrow
+            final int placeholderPrep = 7;
+            int estimatedWait = position * placeholderPrep;
+            System.out.println("Estimated wait time for table #" + tableNumber + " is " + estimatedWait + " minutes.");
+            break;
             case 6: // Checkout
-                // TODO: Checkout
+                int tableNumber6 = promptForTableNumber(scanner);
+                Orders currentOrder = orderManager.getOrder(tableNumber6);
+
+                if (currentOrder == null) {
+                    System.out.println("No order found for this table number");
+                    break;
+                }
+                // copilot assisted below
+                System.out.println("Order summary for table #" + tableNumber6 + ":");
+                currentOrder.printOrderSummary();
+                double total = currentOrder.calculateTotal();
+                System.out.printf("Total: $%.2f%n", total);
+
+                // Remove from wait queue after checkout
+                waitQueue.removeTable(tableNumber6);
+
                 break;
             case 7: // Exit
-                // TODO: Exit
                 running = false;
                 System.out.println("Goodbye");
                 break;

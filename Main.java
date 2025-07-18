@@ -6,9 +6,20 @@ public class Main {
     // Helper to prompt for table number
     public static int promptForTableNumber(Scanner scanner) {
         System.out.print("Enter table number: ");
-        int tableNumber = scanner.nextInt();
-        scanner.nextLine();
-        return tableNumber;
+        return getIntInput(scanner);
+    }
+
+    // Helper to safely get integer input with validation
+    // input validation implemented by copilot to prevent the program from exiting on invalid input
+    public static int getIntInput(Scanner scanner) {
+        while (true) {
+            String input = scanner.nextLine();
+            try {
+                return Integer.parseInt(input.trim());
+            } catch (NumberFormatException e) {
+                System.out.print("Invalid input. Please enter a valid number: ");
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -67,8 +78,7 @@ public class Main {
             System.out.println("------------------------");
 
             System.out.println("Choose an option by number: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine();
+            int choice = getIntInput(scanner);
 
             switch (choice) {
             case 1: // Display the menu
@@ -86,8 +96,7 @@ public class Main {
                 break;
             case 2: // Create an order
                 System.out.print("Pick a table number: ");
-                int tableNumber2 = scanner.nextInt();
-                scanner.nextLine();
+                int tableNumber2 = getIntInput(scanner);
 
                 // Check if order already exists
                 if (orderManager.getOrder(tableNumber2) != null) {
@@ -103,8 +112,7 @@ public class Main {
                 break;
             case 3: // Add an item to the order
                 System.out.print("Add item to which order #? ");
-                int tableNumber3 = scanner.nextInt();
-                scanner.nextLine();
+                int tableNumber3 = getIntInput(scanner);
                 // copilot assisted below
                 Orders order3 = orderManager.getOrder(tableNumber3);
                 // If the user enters a table number that isn't in the queue
@@ -124,8 +132,7 @@ public class Main {
                 break;
             case 4: // Undo last item
                 System.out.print("Undo last item for which order #? ");
-                int tableNumber4 = scanner.nextInt();
-                scanner.nextLine();
+                int tableNumber4 = getIntInput(scanner);
                 Orders order4 = orderManager.getOrder(tableNumber4);
 
                 if (order4 == null) {

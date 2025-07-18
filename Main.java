@@ -1,5 +1,7 @@
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Collections;
+import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
@@ -22,6 +24,9 @@ public class Main {
         for (MenuItem item : menu) {
             menuMap.put(item.getName(), item);
         }
+        // Initializes these for uses in later cases
+        OrderManager orderManager = new OrderManager();
+        WaitQueue waitQueue = new WaitQueue();
         // Initiates scanner for user input
         Scanner scanner = new Scanner(System.in);
 
@@ -56,8 +61,6 @@ public class Main {
                 System.out.println("Barbecue sauce: 0.25");
                 break;
             case 2: // Create an order
-                static OrderManager orderManager = new OrderManager();
-                static WaitQueue waitQueue = new WaitQueue();
                 System.out.print("Pick a table number: ");
                 int tableNumber = scanner.nextInt();
                 scanner.nextLine();
@@ -126,9 +129,9 @@ public class Main {
             }
 
             int position = waitQueue.getPosition(tableNumber);
-            // Was done in a rush, implementing proper algorithm tomorrow
-            final int placeholderPrep = 7;
-            int estimatedWait = position * placeholderPrep;
+            // Uses position from waitQueue, and adds a set prep time
+            final int prepTime = 5;
+            int estimatedWait = position * prepTime;
             System.out.println("Estimated wait time for table #" + tableNumber + " is " + estimatedWait + " minutes.");
             break;
             case 6: // Checkout
